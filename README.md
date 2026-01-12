@@ -1,6 +1,6 @@
 # AI-Research-Agent
 
-Personal project attempting to build an autonomous AI research agent using LangChain and LangGraph. This agent is designed to navigate complex research tasks by planning, retrieving data from internal and external sources, and self-correcting via a rigorous LLM-based validation loop.
+Personal project attempting to build an autonomous AI research agent using LangChain and LangGraph. It utilizes a Plan-Execute-Verify loop, querying structured internal data (like PostgreSQL) and unstructured web/PDF data (MongoDB Vector Store) to produce validated, high-accuracy reports.
 
 ### agents
 
