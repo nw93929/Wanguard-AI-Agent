@@ -25,8 +25,6 @@ services:
     depends_on:
       redis:
         condition: service_healthy
-      ollama:
-        condition: service_started
     volumes:
       - .:/app
       - hf_cache:/root/.cache/huggingface # Worker also needs the models
@@ -34,22 +32,6 @@ services:
       - PYTHONPATH=/app
       - HF_HOME=/root/.cache/huggingface
     command: celery -A workers.tasks worker --loglevel=info
-
-  # Local Model Hub
-  ollama:
-    image: ollama/ollama:latest
-    ports:
-      - "11434:11434"
-    volumes:
-      - ollama_data:/root/.ollama
-    # Optional: Uncomment below if you have an NVIDIA GPU
-    # deploy:
-    #   resources:
-    #     reservations:
-    #       devices:
-    #         - driver: nvidia
-    #           count: all
-    #           capabilities: [gpu]
 
   # Redis Broker
   redis:
@@ -76,6 +58,5 @@ services:
       - postgres_data:/var/lib/postgresql/data
 
 volumes:
-  ollama_data:
   postgres_data:
-  hf_cache: # New volume for Hugging Face persistence
+  hf_cache: # Volume for Hugging Face model persistence
