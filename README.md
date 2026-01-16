@@ -169,28 +169,6 @@ query = "Analyze Tesla's Q4 2024 financial performance and competitive position 
 asyncio.run(run_research(query))
 ```
 
-## Tech Stack Rationale
-
-**Why LangGraph over LangChain?**
-- Stateful workflows with checkpoints
-- Conditional routing (loop back if quality low)
-- Better observability with streaming updates
-
-**Why Pinecone over Chroma/FAISS?**
-- Serverless vector database (no infra management)
-- Sub-100ms query latency at scale
-- Metadata filtering for time-series financial data
-
-**Why Quantize Phi-3?**
-- 75% memory reduction (7.6GB → 1.9GB)
-- Sufficient quality for structured scoring tasks
-- Eliminates API costs for grading
-
-**Why Celery + Redis?**
-- Horizontal scaling (add more worker containers)
-- Retry logic for failed research tasks
-- Priority queues for urgent vs batch queries
-
 ## Performance Characteristics
 
 - **Cold start**: ~15-20 seconds (loading Phi-3 model)
@@ -198,17 +176,16 @@ asyncio.run(run_research(query))
 - **Peak throughput**: 10-20 queries/minute (with 5 workers)
 - **Memory**: 4GB per worker (2GB model + 2GB overhead)
 
-## Future Enhancements
+## Working On...
 
 - [ ] Real-time data ingestion from financial APIs
 - [ ] Multi-agent debates (bull vs bear agents)
 - [ ] Portfolio-level analysis (correlations, risk metrics)
-- [ ] Integration with trading platforms for signal generation
 - [ ] Custom embedding fine-tuning on financial terminology
 
 ## Contributing
 
-This is a personal learning project, but feedback welcome via Issues.
+This is a personal learning project, but feedback welcome reach out to me on LinkedIn where you probably found this :)
 
 ## License
 
