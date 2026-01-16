@@ -38,7 +38,10 @@ tests/test_cost_analysis.py
 tests/test_performance.py
 tests/run_all_benchmarks.py
 EXAMPLE_METRICS.md
+PRODUCTION_IMPROVEMENTS.md
 demo.py
+tests/test_financial_accuracy.py
+tests/README.md
 
 # Data files (may contain sensitive info)
 data/processed/
